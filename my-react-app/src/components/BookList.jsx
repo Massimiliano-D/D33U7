@@ -4,7 +4,7 @@ import { Col, Form, Row } from "react-bootstrap";
 
 class BookList extends Component {
   state = {
-    cercastolibro: "",
+    cercaStolibro: "",
   };
   render() {
     return (
@@ -16,15 +16,15 @@ class BookList extends Component {
               <Form.Control
                 type="text"
                 placeholder="Cerca qui"
-                value={this.state.cercastolibro}
-                onChange={(daje) => this.setState({ cercastolibro: daje.target.value })}
+                value={this.state.cercaStolibro}
+                onChange={(daje) => this.setState({ cercaStolibro: daje.target.value })}
               />
             </Form.Group>
           </Col>
         </Row>
         <Row>
           {this.props.books
-            .filter((koob) => koob.title.includes(this.state.cercastolibro))
+            .filter((koob) => koob.title.toLowerCase().includes(this.state.cercaStolibro))
             .map((koob) => (
               <Col xs={12} md={4} key={koob.asin}>
                 <SingleBook book={koob} />
